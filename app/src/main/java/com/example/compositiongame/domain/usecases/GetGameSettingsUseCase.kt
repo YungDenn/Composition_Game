@@ -9,6 +9,6 @@ class GetGameSettingsUseCase(
 ) {
 
     operator fun invoke(level: Level): GameSettings{
-        return repository.getGameSettings(level)//
+        return repository.getGameSettings(level)
     }
 }
