@@ -35,11 +35,54 @@ class GameFinishedFragment : Fragment() {
             override fun handleOnBackPressed() {
                 retryGame()
             }
+
+
         }
+        setGameResult()
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
         binding.buttonRetry.setOnClickListener{
             retryGame()
+        }
+    }
+
+    private fun  setGameResult(){
+        with(binding){
+            emojiResult.setImageResource(getEmoji())
+            tvRequiredAnswers.text = String.format(
+                getString(R.string.required_score),
+                gameResult.gameSettings.minCountOfRightAnswers
+            )
+            tvRequiredPercentage.text = String.format(
+                getString(R.string.required_percentage),
+                gameResult.gameSettings.minPercentOfRightAnswers
+            )
+            tvScoreAnswers.text = String.format(
+                getString(R.string.score_answers),
+                gameResult.countOfRightAnswers
+            )
+            tvScorePercentage.text = String.format(
+                getString(R.string.score_percentage),
+                getPercentOfRightAnswers()
+            )
+
+        }
+    }
+    private fun getEmoji(): Int{
+        return if (gameResult.winner){
+            R.drawable.ic_smile
+        }
+        else{
+            R.drawable.ic_sad
+        }
+
+    }
+
+    private fun getPercentOfRightAnswers() = with(gameResult){
+        if (countOfQuestions == 0){
+            0
+        }else {
+            ((countOfRightAnswers/countOfQuestions.toDouble())*100).toInt()
         }
     }
 
