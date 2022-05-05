@@ -45,23 +45,15 @@ class ChooseLevelFragment : Fragment() {
     }
 
     private fun launchGame(level: Level){
-        val args = Bundle().apply {
-            putParcelable(GameFragment.KEY_LEVEL, level)
-        }
-        findNavController().navigate(R.id.action_chooseLevelFragment_to_gameFragment, args)
+                findNavController().navigate(
+                    ChooseLevelFragmentDirections.actionChooseLevelFragmentToGameFragment(level)
+                )
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-    companion object{
 
-        const val NAME = "ChooseLevelFragment"
-
-        fun newInstance(): ChooseLevelFragment{
-            return ChooseLevelFragment()
-        }
-    }
 
 }
