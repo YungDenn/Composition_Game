@@ -28,26 +28,26 @@ class ChooseLevelFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(binding){
-            buttonLevelTest.setOnClickListener{
+        with(binding) {
+            buttonLevelTest.setOnClickListener {
                 launchGame(Level.TEST)
             }
-            buttonLevelEasy.setOnClickListener{
+            buttonLevelEasy.setOnClickListener {
                 launchGame(Level.EASY)
             }
-            buttonLevelNormal.setOnClickListener{
+            buttonLevelNormal.setOnClickListener {
                 launchGame(Level.NORMAL)
             }
-            buttonLevelHard.setOnClickListener{
+            buttonLevelHard.setOnClickListener {
                 launchGame(Level.HARD)
             }
         }
     }
 
-    private fun launchGame(level: Level){
-                findNavController().navigate(
-                    ChooseLevelFragmentDirections.actionChooseLevelFragmentToGameFragment(level)
-                )
+    private fun launchGame(level: Level) {
+        findNavController().navigate(
+            ChooseLevelFragmentDirections.actionChooseLevelFragmentToGameFragment(level)
+        )
     }
 
     override fun onDestroy() {

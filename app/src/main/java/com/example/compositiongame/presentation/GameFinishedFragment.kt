@@ -47,20 +47,21 @@ class GameFinishedFragment : Fragment() {
     }
 
     private fun  setGameResult(){
+        binding.gameResult = args.result
         with(binding){
             emojiResult.setImageResource(getEmoji())
-            tvRequiredAnswers.text = String.format(
-                getString(R.string.required_score),
-                args.result.gameSettings.minCountOfRightAnswers
-            )
-            tvRequiredPercentage.text = String.format(
-                getString(R.string.required_percentage),
-                args.result.gameSettings.minPercentOfRightAnswers
-            )
-            tvScoreAnswers.text = String.format(
-                getString(R.string.score_answers),
-                args.result.countOfRightAnswers
-            )
+//            tvRequiredAnswers.text = String.format(
+//                getString(R.string.required_score),
+//                args.result.gameSettings.minCountOfRightAnswers
+//            )
+//            tvRequiredPercentage.text = String.format(
+//                getString(R.string.required_percentage),
+//                args.result.gameSettings.minPercentOfRightAnswers
+//            )
+//            tvScoreAnswers.text = String.format(
+//                getString(R.string.score_answers),
+//                args.result.countOfRightAnswers
+//            )
             tvScorePercentage.text = String.format(
                 getString(R.string.score_percentage),
                 getPercentOfRightAnswers()
